@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { BiSolidContact } from 'react-icons/bi';
-
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import ContactForm from '../ContactForm/ContactForm';
 import ContactList from '../ContactList/ContactList';
 import Filter from '../Filter/Filter';
@@ -34,8 +34,7 @@ const App = () => {
     );
     // Перевіряє, чи є контакт із таким же ім'ям у списку контактів. Якщо контакт вже існує, виводиться попередження.
     if (isInContacts) {
-      alert(`${contact.name} is already in contacts`);
-      return;
+      return Notify.info(`${contact.name} is already in contacts`);
     }
 
     setContacts(prevContacts => [
